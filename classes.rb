@@ -2,8 +2,8 @@ class Dino
   attr_accessor :dino_name, :diet, :hunting_style, :prey, :plants_eaten, :can_fly
 
   def initialize
-      self.diet = "Omnivore"
-      self.can_fly = false
+    self.diet = "Omnivore"
+    self.can_fly = false
   end
 
   def consume(food)
@@ -46,13 +46,15 @@ class Dino
     puts "#{dino_name} is in the mood for a salad. Off to find some toppings!"
   end
 
-  def self.all; ObjectSpace.each_object(self).to_a end
+  def self.all
+    ObjectSpace.each_object(self).to_a
+  end
 end
 
 class Carnivore < Dino
 
   def initialize
-      self.diet = "Carnivore"
+    self.diet = "Carnivore"
   end
 
   def forage
@@ -60,11 +62,11 @@ class Carnivore < Dino
   end
 
   def run
-    self.can_fly == true ? puts("#{dino_name} just flew. That's kinda cool.") : super
+    self.can_fly ? puts("#{dino_name} just flew. That's kinda cool.") : super
   end
 
   def run_away
-    self.can_fly == true ? puts("#{dino_name} just flew away. Wuss.") : super
+    self.can_fly ? puts("#{dino_name} just flew away. Wuss.") : super
   end
 
 end
@@ -72,7 +74,7 @@ end
 class Herbivore < Dino
 
   def initialize
-      self.diet = "Herbivore"
+    self.diet = "Herbivore"
   end
 
   def stalk_prey(prey)

@@ -59,7 +59,7 @@ category_list = [
   "3) All plant-eating dinos",
   "4) All armored dinos",
   "5) All horned dinos"
-  ]
+]
 
 all_dino = Dino.all
 all_dino_names = map_to_names(all_dino)
@@ -138,7 +138,7 @@ if dino_choice.class == Carnivore || dino_choice.class == Dino
 Let's see if they go for some veggies...}
   sleep(2)
   dino_choice.forage
-elsif dino_choice.class == Herbivore || dino_choice.class.superclass == Herbivore
+elsif dino_choice.kind_of?(Herbivore)
   dino_choice.forage
   sleep(3)
   dino_choice.consume("some leaves and shit")
@@ -156,10 +156,10 @@ end
 unless dino_choice == trex
   puts "\nUh oh, looks like T. Rex is approaching...\n"
   sleep(2)
-  [Armored, Horned].include? dino_choice.class ? dino_choice.run_away : dino_choice.defend("T. Rex")
+  ([Armored, Horned]).include? dino_choice.class ? dino_choice.run_away : dino_choice.defend("T. Rex")
 end
 
-if [Armored, Horned].include? dino_choice.class
+if ([Armored, Horned]).include? dino_choice.class
   puts %{
 Did you know #{dino_choice.dino_name}, in addition to being a #{dino_choice.class.to_s.downcase} dino,
 is also an #{dino_choice.class.superclass.to_s.downcase}?
